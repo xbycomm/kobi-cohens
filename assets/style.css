@@ -260,3 +260,17 @@ html,body{overflow-x:clip}
 .rm .lockup small,.rm .eyebrow b,.rm .shimmer{color:var(--gold-2);background:none}
 @media (prefers-reduced-motion:reduce){.js [data-rv]{translate:none}.js [data-rv],.js .rv-hero,.js .split .w>span{opacity:1;transform:none}.js .hero-pic .kb{clip-path:inset(0 round var(--kr))}}
 @media (max-width:820px){.kb{border-radius:50%;--kr:50%}.hero-pic .kb img{aspect-ratio:1}}
+
+/* accessibility statement pages + unknown-field callouts */
+.legal-page{padding:56px 0 88px}
+.legal-page .legal-wrap{max-width:820px;margin-inline:auto}
+.legal-page h1{font-size:clamp(1.8rem,3.2vw,2.4rem);margin:0 0 8px}
+.legal-page .legal-lead{font-size:1.1rem;margin:0 0 8px}
+.legal-page .legal-date{font-size:.9rem;opacity:.8;margin:0 0 28px}
+.legal-page section{margin:0 0 22px;padding:22px 24px;border:1px solid var(--line, rgba(0,0,0,.12));border-radius:16px;background:var(--white,#fff)}
+.legal-page h2{font-size:1.2rem;margin:0 0 10px}
+.legal-page p,.legal-page li{font-size:1.02rem;line-height:1.65}
+.legal-page ul{margin:8px 0 0;padding-inline-start:1.2em;display:grid;gap:6px}
+.legal-page .legal-contact{list-style:none;padding:0;display:grid;gap:6px}
+.legal-page .legal-unknown{background:#fff8d6;border:1px solid #e3c66a;color:#3b2f0b;border-radius:12px;padding:14px 16px;margin-top:12px}
+.legal-page .legal-unknown strong{display:block;margin-bottom:4px}

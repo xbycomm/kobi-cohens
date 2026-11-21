@@ -146,9 +146,11 @@
       '</div>' +
       '<div class="xby-a11y-size">' +
         '<span>' + t.size + '</span>' +
-        '<button type="button" data-size="-1" aria-label="' + t.smaller + '">−</button>' +
-        '<b data-size-label>100%</b>' +
-        '<button type="button" data-size="1" aria-label="' + t.larger + '">+</button>' +
+        '<span class="xby-a11y-size-ctrls">' +
+          '<button type="button" data-size="-1" aria-label="' + t.smaller + '">−</button>' +
+          '<b data-size-label>100%</b>' +
+          '<button type="button" data-size="1" aria-label="' + t.larger + '">+</button>' +
+        '</span>' +
       '</div>' +
       toggleBtn("contrast", t.contrast) +
       toggleBtn("gray", t.gray) +
@@ -161,6 +163,15 @@
     root.appendChild(panel);
     root.appendChild(btn);
     document.documentElement.appendChild(root);
+
+    if (root.hasAttribute("data-lift-booking") && document.body) {
+      var syncLift = function () {
+        if (document.body.classList.contains("has-booking")) root.setAttribute("data-lift-now", "");
+        else root.removeAttribute("data-lift-now");
+      };
+      syncLift();
+      new MutationObserver(syncLift).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    }
 
     var sizeLabel = panel.querySelector("[data-size-label]");
     var minus = panel.querySelector('[data-size="-1"]');

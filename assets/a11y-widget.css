@@ -91,18 +91,20 @@ html.a11y-motion body *::after {
 .xby-a11y-root[dir="ltr"] { direction: ltr; text-align: left; }
 
 /* Raise above the online-booking pill (right side) when it is visible */
-body.has-booking ~ .xby-a11y-root[data-lift-booking] {
-  bottom: 86px;
-  bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+html:has(body.has-booking) .xby-a11y-root[data-lift-booking],
+.xby-a11y-root[data-lift-now] {
+  bottom: 96px;
+  bottom: calc(96px + env(safe-area-inset-bottom, 0px));
 }
 @media (max-width: 820px) {
   .xby-a11y-root[data-lift-mobile] {
     bottom: 88px;
     bottom: calc(88px + env(safe-area-inset-bottom, 0px));
   }
-  body.has-booking ~ .xby-a11y-root[data-lift-booking] {
-    bottom: 80px;
-    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  html:has(body.has-booking) .xby-a11y-root[data-lift-booking],
+  .xby-a11y-root[data-lift-now] {
+    bottom: 110px;
+    bottom: calc(110px + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -236,6 +238,7 @@ body.has-booking ~ .xby-a11y-root[data-lift-booking] {
 }
 .xby-a11y-size span { font-weight: 700; flex: 1; }
 .xby-a11y-size b { font-weight: 700; min-width: 3.2em; text-align: center; color: var(--xby-a11y-muted); }
+.xby-a11y-size .xby-a11y-size-ctrls { display: flex; align-items: center; gap: 8px; direction: ltr; }
 .xby-a11y-size button {
   width: 40px;
   height: 40px;

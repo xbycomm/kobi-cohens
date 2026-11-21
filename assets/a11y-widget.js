@@ -164,13 +164,16 @@
     root.appendChild(btn);
     document.documentElement.appendChild(root);
 
-    if (root.hasAttribute("data-lift-booking") && document.body) {
+    if (root.hasAttribute("data-lift-booking")) {
       var syncLift = function () {
-        if (document.body.classList.contains("has-booking")) root.setAttribute("data-lift-now", "");
+        var on = document.documentElement.classList.contains("has-booking") ||
+          (document.body && document.body.classList.contains("has-booking"));
+        if (on) root.setAttribute("data-lift-now", "");
         else root.removeAttribute("data-lift-now");
       };
       syncLift();
-      new MutationObserver(syncLift).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+      new MutationObserver(syncLift).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+      if (document.body) new MutationObserver(syncLift).observe(document.body, { attributes: true, attributeFilter: ["class"] });
     }
 
     var sizeLabel = panel.querySelector("[data-size-label]");
